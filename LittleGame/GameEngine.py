@@ -2,6 +2,7 @@ from Parts import Parts
 from Parts import AfterLife
 from Races import Races
 from Races import HalfHuman
+from Races import ManKind
 
 print " the part %s" % Parts.parts['start']
 my = Parts()
@@ -15,11 +16,8 @@ luckyNumber = input("Tell me your lucky number: ") # raw_input doesn't evaluate 
 try:
 	if Parts.partNumb[luckyNumber] != None:
 		print Parts.parts[Parts.partNumb[luckyNumber]]
-		pathOfYours = AfterLife()
-		pathOfYours.tellYourPath(luckyNumber)
-		myRace = Races()
-		halfHuman = HalfHuman()
-		myRace.tellMeMyRace()
-		halfHuman.tellMeMyRace() # Inheritance
+		selection = Races()
+		selection = selection.pickArace(luckyNumber) 
+		selection.tellMeMyRace()
 except KeyError, e:
 	print "I've got key error!"

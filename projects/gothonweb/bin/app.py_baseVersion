@@ -1,0 +1,19 @@
+import web
+
+urls = (
+'/hello', 'index'
+)
+
+app = web.application(urls,globals())
+render = web.template.render('templates/')
+class index:
+	def GET(self):
+		greeting = "Hello World! "
+		form = web.input(name=None, surname='Nop')
+		#return render.index(greeting = greeting)
+		if form.name:
+			return (greeting + form.name + " "+ form.surname)
+		else:
+			return "ERROR: name is required"
+if __name__ == "__main__":
+	app.run()
